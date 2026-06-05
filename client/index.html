@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AIEDIT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 顶部栏 -->
+  <div class="header">
+    <span class="header-title">AIEDIT</span>
+    <button class="btn-icon" id="btnSettings" title="设置">⚙</button>
+  </div>
+
+  <!-- 设置面板（默认隐藏） -->
+  <div class="settings-panel hidden" id="settingsPanel">
+    <div class="settings-section">
+      <h3>图生图（效果图）</h3>
+      <label>服务商</label>
+      <select id="img2imgProvider">
+        <option value="agnes">Agnes</option>
+        <option value="replicate">Replicate</option>
+        <option value="custom">自定义</option>
+      </select>
+      <label>Base URL</label>
+      <input type="text" id="img2imgBaseUrl" placeholder="https://apihub.agnes-ai.com/v1">
+      <label>Endpoint</label>
+      <input type="text" id="img2imgEndpoint" placeholder="/images/generations">
+      <label>模型名称</label>
+      <input type="text" id="img2imgModel" placeholder="agnes-image-2.0-flash">
+      <label>API Key</label>
+      <input type="password" id="img2imgKey" placeholder="sk-...">
+    </div>
+    <div class="settings-section">
+      <h3>图生视频（动画化）</h3>
+      <label>服务商</label>
+      <select id="img2vidProvider">
+        <option value="agnes">Agnes</option>
+        <option value="replicate">Replicate</option>
+        <option value="custom">自定义</option>
+      </select>
+      <label>Base URL</label>
+      <input type="text" id="img2vidBaseUrl" placeholder="https://apihub.agnes-ai.com/v1">
+      <label>Endpoint</label>
+      <input type="text" id="img2vidEndpoint" placeholder="/videos">
+      <label>模型名称</label>
+      <input type="text" id="img2vidModel" placeholder="agnes-video-v2.0">
+      <label>API Key</label>
+      <input type="password" id="img2vidKey" placeholder="sk-...">
+    </div>
+    <button class="btn btn-primary" id="btnSaveSettings">保存设置</button>
+    <div class="settings-status" id="settingsStatus"></div>
+  </div>
+
+  <!-- 第1步：截图 -->
+  <div class="step">
+    <div class="step-header">
+      <span class="step-badge">1</span>
+      <span class="step-title">截取当前帧</span>
+    </div>
+    <div class="preview-box" id="previewFirstFrame">
+      <span class="preview-placeholder">点击下方按钮截图</span>
+    </div>
+    <button class="btn btn-secondary" id="btnCapture">截取当前帧</button>
+    <div class="status" id="statusCapture"></div>
+  </div>
+
+  <!-- 第2步：生成效果图 -->
+  <div class="step">
+    <div class="step-header">
+      <span class="step-badge">2</span>
+      <span class="step-title">生成效果图</span>
+    </div>
+    <div class="preview-box" id="previewEffect">
+      <span class="preview-placeholder">生成后在此预览</span>
+    </div>
+    <textarea class="prompt-input" id="promptEffect" placeholder="描述你想要的效果...&#10;例如：加上赛博朋克霓虹光效、粒子飘散、水墨风格" rows="3"></textarea>
+    <div class="preset-tags">
+      <span class="preset-tag" data-prompt="赛博朋克霓虹光效">霓虹</span>
+      <span class="preset-tag" data-prompt="金色粒子飘散效果">粒子</span>
+      <span class="preset-tag" data-prompt="中国水墨画风格">水墨</span>
+      <span class="preset-tag" data-prompt="火焰燃烧特效">火焰</span>
+      <span class="preset-tag" data-prompt="梦幻柔焦光斑">光斑</span>
+    </div>
+    <button class="btn btn-primary" id="btnGenerateImg">生成效果图</button>
+    <div class="progress-bar hidden" id="progressImg">
+      <div class="progress-fill" id="progressImgFill"></div>
+    </div>
+    <div class="status" id="statusImg"></div>
+  </div>
+
+  <!-- 第3步：生成视频 -->
+  <div class="step">
+    <div class="step-header">
+      <span class="step-badge">3</span>
+      <span class="step-title">让效果动起来</span>
+    </div>
+    <div class="preview-box" id="previewVideo">
+      <span class="preview-placeholder">生成后在此预览</span>
+    </div>
+    <textarea class="prompt-input" id="promptVideo" placeholder="描述动态效果（可选，留空则自动生成）...&#10;例如：光效缓慢流动、粒子从左到右飘散" rows="2"></textarea>
+    <button class="btn btn-primary" id="btnGenerateVid">生成动画视频</button>
+    <button class="btn btn-secondary" id="btnImport" disabled>导入到合成末尾</button>
+    <div class="progress-bar hidden" id="progressVid">
+      <div class="progress-fill" id="progressVidFill"></div>
+    </div>
+    <div class="status" id="statusVid"></div>
+  </div>
+
+  <!-- CSInterface.js（CEP 内置） -->
+  <script src="settings.js"></script>
+  <script src="api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

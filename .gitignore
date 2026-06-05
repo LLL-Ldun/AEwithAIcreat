@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Superpowers
+.superpowers/
+
+# Dependencies
+node_modules/
+
+# Build
+*.tmp
+*.log
+
+# Generated output (渲染输出、临时图片/视频)
+output/
+temp/
+*.png.tmp
+*.mp4.tmp

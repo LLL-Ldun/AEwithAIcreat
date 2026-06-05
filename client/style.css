@@ -1,0 +1,218 @@
+/* === Reset & Base === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #2d2d2d;
+  --bg-panel: #383838;
+  --bg-input: #4a4a4a;
+  --border: #555;
+  --text: #e0e0e0;
+  --text-secondary: #aaa;
+  --text-muted: #777;
+  --accent: #6ea8fe;
+  --accent-hover: #8bb9fe;
+  --danger: #e05555;
+  --success: #5cb85c;
+  --warning: #f0ad4e;
+  --radius: 6px;
+  --gap: 10px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  padding: var(--gap);
+  user-select: none;
+  overflow-y: auto;
+}
+
+/* === Header === */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gap);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.header-title { font-size: 15px; font-weight: 600; }
+
+/* === Buttons === */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+.btn-secondary { background: var(--bg-input); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover:not(:disabled) { background: #555; }
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+}
+.btn-icon:hover { color: var(--text); }
+
+/* === Steps === */
+.step {
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: var(--gap);
+}
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.step-badge {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.step-title { font-weight: 600; font-size: 13px; }
+
+/* === Preview === */
+.preview-box {
+  width: 100%;
+  min-height: 100px;
+  background: var(--bg-input);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.preview-box img,
+.preview-box video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.preview-placeholder {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* === Inputs === */
+.prompt-input {
+  width: 100%;
+  padding: 8px;
+  background: var(--bg-input);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+  margin-top: 6px;
+}
+.prompt-input::placeholder { color: var(--text-muted); }
+
+/* === Preset Tags === */
+.preset-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+.preset-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+.preset-tag:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* === Status === */
+.status {
+  font-size: 11px;
+  margin-top: 4px;
+  min-height: 16px;
+}
+.status-ok { color: var(--success); }
+.status-err { color: var(--danger); }
+.status-info { color: var(--text-secondary); }
+
+/* === Progress Bar === */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-input);
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* === Settings === */
+.settings-panel {
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: var(--gap);
+}
+.settings-section {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.settings-section:last-of-type { border-bottom: none; margin-bottom: 8px; }
+.settings-section h3 {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+.settings-section label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+.settings-section select,
+.settings-section input {
+  width: 100%;
+  padding: 6px 8px;
+  background: var(--bg-input);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-family: inherit;
+}
+.settings-section input::placeholder { color: var(--text-muted); }
+.settings-status { font-size: 11px; margin-top: 4px; }
+
+/* === Utilities === */
+.hidden { display: none !important; }
