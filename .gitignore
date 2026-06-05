@@ -22,3 +22,5 @@ output/
 temp/
 *.png.tmp
 *.mp4.tmp
+docs/
+.superpowers/
